@@ -1,10 +1,9 @@
 package net.aspenk12.java4ftc;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
 import net.aspenk12.java4ftc.ps4.*;
+import java.util.List;
 
 public class GridLoggerTest {
 
