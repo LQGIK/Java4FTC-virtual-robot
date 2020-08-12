@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class FileLogWriter implements LogWriter {
 
-    private final String fileName;
+    private String fileName;
     private boolean writing = false;
     private FileWriter fileWriter;
 
