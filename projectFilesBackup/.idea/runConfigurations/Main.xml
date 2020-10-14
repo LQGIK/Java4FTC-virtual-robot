@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Main" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="virtual_robot.controller.VirtualRobotApplication" />
@@ -17,4 +16,3 @@
     </method>
   </configuration>
 </component>
-

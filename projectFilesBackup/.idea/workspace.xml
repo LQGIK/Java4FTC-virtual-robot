@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Java4FTC-virtual-robot:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="42108bba-236d-49d2-aba6-62320a1ec452" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Java4FTC_virtual_robot_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TeamCode/src/net/waring/java4ftc/ops/Claw.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TeamCode/src/net/waring/java4ftc/ops/IMU.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TeamCode/src/net/waring/java4ftc/ops/SyncTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TeamCode/src/net/waring/java4ftc/utilities/Utils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TeamCode/src/org/firstinspires/ftc/teamcode/ArmMecanumAutoEncoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TeamCode/src/org/firstinspires/ftc/teamcode/IMU.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TeamCode/src/org/firstinspires/ftc/teamcode/MecanumAutoEncoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TeamCode/src/org/firstinspires/ftc/teamcode/MecanumTeleOp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TeamCode/src/org/firstinspires/ftc/teamcode/TestTeleOp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TeamCode/test/net/waring/java4ftc/ops/IMUTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/src/virtual_robot/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/src/virtual_robot/config/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/net/aspenk12/java4ftc/ps3/LineSegment.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/net/waring/java4ftc/pathfollower/LineSegment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/net/aspenk12/java4ftc/ps3/Path.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/net/waring/java4ftc/pathfollower/Path.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/net/aspenk12/java4ftc/ps3/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/net/waring/java4ftc/pathfollower/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/net/aspenk12/java4ftc/ps4/Clock.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/net/waring/java4ftc/utilities/Clock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/net/aspenk12/java4ftc/ps4/FileLogWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/net/waring/java4ftc/utilities/FileLogWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/net/aspenk12/java4ftc/ps4/GridLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/net/waring/java4ftc/utilities/GridLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/net/aspenk12/java4ftc/ps4/LogWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/net/waring/java4ftc/utilities/LogWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/net/aspenk12/java4ftc/ps4/SystemClock.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/net/waring/java4ftc/utilities/SystemClock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/net/aspenk12/java4ftc/ps4/TestClock.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/net/waring/java4ftc/utilities/TestClock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/net/aspenk12/java4ftc/ps4/TestWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/net/waring/java4ftc/utilities/TestWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/net/aspenk12/java4ftc/ps5/ConceptVuforia.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/net/waring/java4ftc/ops/ConceptVuforia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/net/aspenk12/java4ftc/ps5/OdometrySystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/net/waring/java4ftc/ops/OdometrySystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/net/aspenk12/java4ftc/ps5/SensorBNO055IMU.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/net/aspenk12/java4ftc/ps5/TestAutoOp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/net/aspenk12/java4ftc/ps5/TestTeleOp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/org/firstinspires/ftc/teamcode/ArmBotDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/org/firstinspires/ftc/teamcode/demos/ArmBotDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/org/firstinspires/ftc/teamcode/EncBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/org/firstinspires/ftc/teamcode/demos/EncBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/org/firstinspires/ftc/teamcode/MechBotAutoDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/org/firstinspires/ftc/teamcode/demos/MechBotAutoDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/org/firstinspires/ftc/teamcode/TestOdom.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/org/firstinspires/ftc/teamcode/TestOdom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/org/firstinspires/ftc/teamcode/TwoWheelArcadeDrive.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/org/firstinspires/ftc/teamcode/demos/TwoWheelArcadeDrive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/org/firstinspires/ftc/teamcode/TwoWheelDemoLinear.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/org/firstinspires/ftc/teamcode/demos/TwoWheelDemoLinear.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/org/firstinspires/ftc/teamcode/TwoWheelDemoOpMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/org/firstinspires/ftc/teamcode/demos/TwoWheelDemoOpMode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/src/org/firstinspires/ftc/teamcode/XDriveBotDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/org/firstinspires/ftc/teamcode/demos/XDriveBotDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/test/net/aspenk12/java4ftc/GridLoggerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/test/net/waring/java4ftc/GridLoggerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/test/net/aspenk12/java4ftc/LineSegmentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/test/net/waring/java4ftc/LineSegmentTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/test/net/aspenk12/java4ftc/PathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/test/net/waring/java4ftc/PathTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/test/net/aspenk12/java4ftc/PointTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/test/net/waring/java4ftc/PointTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/test/net/aspenk12/java4ftc/SampleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/test/net/waring/java4ftc/SampleTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1g0hRFvBvmsfuZJZESMQTFUy7No" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/TeamCode/src/net/aspenk12/java4ftc" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="net.waring.java4ftc.ops" />
+      <recent name="net.aspenk12.java4ftc.ps4" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="net.waring.java4ftc.ops" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.firstinspires.ftc.teamcode" />
+      <recent name="org.firstinspires.ftc.teamcode.ftc16072" />
+      <recent name="net.aspenk12.java4ftc.ps5" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\xlqgi\DEV\FTC\Java4FTC-virtual-robot\TeamCode\src\org\firstinspires\ftc\teamcode" />
+      <recent name="C:\Users\xlqgi\DEV\FTC\Java4FTC-virtual-robot\TeamCode\src\org\firstinspires\ftc\teamcode\ftc16072" />
+      <recent name="C:\Users\xlqgi\DEV\FTC\Java4FTC-virtual-robot\TeamCode\test\net\aspenk12\java4ftc" />
+      <recent name="C:\Users\xlqgi\DEV\FTC\Java4FTC-virtual-robot\TeamCode\src\net\aspenk12\java4ftc\ps3" />
+      <recent name="C:\Users\xlqgi\DEV\FTC\Java4FTC-virtual-robot\TeamCode\src\net\aspenk12\java4ftc\ps4" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="GridLoggerTest.ClockTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TeamCode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="net.aspenk12.java4ftc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="net.aspenk12.java4ftc" />
+      <option name="MAIN_CLASS_NAME" value="net.aspenk12.java4ftc.GridLoggerTest" />
+      <option name="METHOD_NAME" value="ClockTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GridLoggerTest.writeLn (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TeamCode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="net.waring.java4ftc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="net.waring.java4ftc" />
+      <option name="MAIN_CLASS_NAME" value="net.waring.java4ftc.GridLoggerTest" />
+      <option name="METHOD_NAME" value="writeLn" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GridLoggerTest.writeLn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TeamCode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="net.aspenk12.java4ftc.utilities.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="net.aspenk12.java4ftc.ps4" />
+      <option name="MAIN_CLASS_NAME" value="net.aspenk12.java4ftc.ps4.GridLoggerTest" />
+      <option name="METHOD_NAME" value="writeLn" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IMUTest.TestMultipleWraps" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TeamCode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="net.waring.java4ftc.ops.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="net.waring.java4ftc.ops" />
+      <option name="MAIN_CLASS_NAME" value="net.waring.java4ftc.ops.IMUTest" />
+      <option name="METHOD_NAME" value="TestMultipleWraps" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IMUTest.TestWrap" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TeamCode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="net.waring.java4ftc.ops.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="net.waring.java4ftc.ops" />
+      <option name="MAIN_CLASS_NAME" value="net.waring.java4ftc.ops.IMUTest" />
+      <option name="METHOD_NAME" value="TestWrap" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IMUTest.updateWraps" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TeamCode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="net.waring.java4ftc.ops.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="net.waring.java4ftc.ops" />
+      <option name="MAIN_CLASS_NAME" value="net.waring.java4ftc.ops.IMUTest" />
+      <option name="METHOD_NAME" value="updateWraps" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="42108bba-236d-49d2-aba6-62320a1ec452" name="Default Changelist" comment="" />
+      <created>1597257408392</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1597257408392</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="765" y="223" key="#com.intellij.ide.util.MemberChooser" timestamp="1598017231054">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="223" key="#com.intellij.ide.util.MemberChooser/-1280.55.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1598017231054" />
+    <state x="689" y="309" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1598478096587">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="689" y="309" key="#com.intellij.ide.util.TreeClassChooserDialog/-1280.55.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1598478096587" />
+    <state x="486" y="436" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1600139923609">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="486" y="436" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/-1280.55.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1600139923609" />
+    <state x="706" y="375" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1598017729558">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="706" y="375" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/-1280.55.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1598017729558" />
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1599095795768">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1280.55.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1599095795768" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1600130319132">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/-1280.55.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1600130319132" />
+    <state width="1879" height="257" key="GridCell.Tab.0.bottom" timestamp="1600309149916">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1239" height="266" key="GridCell.Tab.0.bottom/-1280.55.1280.984/0.0.1920.1040@-1280.55.1280.984" timestamp="1597587844752" />
+    <state width="1879" height="257" key="GridCell.Tab.0.bottom/-1280.55.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1600309149916" />
+    <state width="1879" height="257" key="GridCell.Tab.0.center" timestamp="1600309149916">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1239" height="266" key="GridCell.Tab.0.center/-1280.55.1280.984/0.0.1920.1040@-1280.55.1280.984" timestamp="1597587844752" />
+    <state width="1879" height="257" key="GridCell.Tab.0.center/-1280.55.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1600309149916" />
+    <state width="1879" height="257" key="GridCell.Tab.0.left" timestamp="1600309149916">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1239" height="266" key="GridCell.Tab.0.left/-1280.55.1280.984/0.0.1920.1040@-1280.55.1280.984" timestamp="1597587844751" />
+    <state width="1879" height="257" key="GridCell.Tab.0.left/-1280.55.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1600309149916" />
+    <state width="1879" height="257" key="GridCell.Tab.0.right" timestamp="1600309149916">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1239" height="266" key="GridCell.Tab.0.right/-1280.55.1280.984/0.0.1920.1040@-1280.55.1280.984" timestamp="1597587844752" />
+    <state width="1879" height="257" key="GridCell.Tab.0.right/-1280.55.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1600309149916" />
+    <state width="1879" height="285" key="GridCell.Tab.1.bottom" timestamp="1600222970979">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1239" height="266" key="GridCell.Tab.1.bottom/-1280.55.1280.984/0.0.1920.1040@-1280.55.1280.984" timestamp="1597587844752" />
+    <state width="1879" height="285" key="GridCell.Tab.1.bottom/-1280.55.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1600222970979" />
+    <state width="1879" height="285" key="GridCell.Tab.1.center" timestamp="1600222970979">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1239" height="266" key="GridCell.Tab.1.center/-1280.55.1280.984/0.0.1920.1040@-1280.55.1280.984" timestamp="1597587844752" />
+    <state width="1879" height="285" key="GridCell.Tab.1.center/-1280.55.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1600222970979" />
+    <state width="1879" height="285" key="GridCell.Tab.1.left" timestamp="1600222970979">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1239" height="266" key="GridCell.Tab.1.left/-1280.55.1280.984/0.0.1920.1040@-1280.55.1280.984" timestamp="1597587844752" />
+    <state width="1879" height="285" key="GridCell.Tab.1.left/-1280.55.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1600222970979" />
+    <state width="1879" height="285" key="GridCell.Tab.1.right" timestamp="1600222970979">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1239" height="266" key="GridCell.Tab.1.right/-1280.55.1280.984/0.0.1920.1040@-1280.55.1280.984" timestamp="1597587844752" />
+    <state width="1879" height="285" key="GridCell.Tab.1.right/-1280.55.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1600222970979" />
+    <state x="440" y="94" key="SettingsEditor" timestamp="1600720019637">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1040" y="144" key="SettingsEditor/-1280.55.1280.984/0.0.1920.1040@-1280.55.1280.984" timestamp="1600120218525" />
+    <state x="440" y="94" key="SettingsEditor/-1280.55.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1600720019637" />
+    <state x="754" y="298" key="chooseDestDirectoryDialog" timestamp="1597258300547">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="754" y="298" key="chooseDestDirectoryDialog/-1280.55.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1597258300547" />
+    <state x="-1005" y="420" key="com.intellij.ide.util.TipDialog" timestamp="1600120176047">
+      <screen x="-1280" y="55" width="1280" height="984" />
+    </state>
+    <state x="-1005" y="420" key="com.intellij.ide.util.TipDialog/-1280.55.1280.984/0.0.1920.1040@-1280.55.1280.984" timestamp="1600120176047" />
+    <state x="708" y="266" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1600106326014">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="708" y="266" key="com.intellij.testIntegration.createTest.CreateTestDialog/-1280.55.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1600106326014" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1600134656682">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/-1280.55.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1600134656682" />
+    <state x="455" y="223" width="1008" height="717" key="search.everywhere.popup" timestamp="1600281370293">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-977" y="266" width="672" height="678" key="search.everywhere.popup/-1280.55.1280.984/0.0.1920.1040@-1280.55.1280.984" timestamp="1597538422093" />
+    <state x="455" y="223" width="1008" height="717" key="search.everywhere.popup/-1280.55.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1600281370293" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/TeamCode/test/net/waring/java4ftc/ops/IMUTest.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="this.data" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
