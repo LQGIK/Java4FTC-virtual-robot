@@ -78,13 +78,13 @@ public class MecanumAutoEncoder extends LinearOpMode {
         initialize();
         waitForStart();
 
-        drive(1000, 0.0, null);
-        drive(2000, 0.0, null);
+        //drive(1000, 0.0, null);
+        //drive(2000, 0.0, null);
 
 
         for (int i=0; i < 8; i++){
-            strafe(i * 45, 5000);
-            strafe (i * 45 + 180, 5000);
+            strafe(i * 45, 5000, 0.0);
+            strafe (i * 45 + 180, 5000, 0.0);
         }
     }
 
@@ -92,35 +92,62 @@ public class MecanumAutoEncoder extends LinearOpMode {
      * @param angle
      * @param ticks
      */
-    public void strafe(double angle, int ticks){
+    public void strafe(double angle, int ticks, double startAngle){
 
         System.out.println(angle + " " + ticks);
 
+
         resetMotors();                                              // Reset Motor Encoders
 
-        double learning_rate = 0.000001;
+
+        double learning_rate = 0.000000001;
         double radians = angle * Math.PI / 180;                     // Convert to radians
         double yFactor = Math.sin(radians);                         // Unit Circle Y
         double xFactor = Math.cos(radians);                         // Unit Circle X
-        double yTicks = yFactor * ticks;
-        double xTicks = xFactor * ticks;
+        double yTicks = Math.abs(yFactor * ticks);
+        double xTicks = Math.abs(xFactor * ticks);
+        double distance = Math.max(yTicks, xTicks);
+
+
 
         // Take whichever is the highest number and find what you need to multiply it by to get 1 (which is the max power)
         double normalizeToPower = 1 / Math.max(Math.abs(xFactor), Math.abs(yFactor));
         double drive = normalizeToPower * yFactor;                 // Fill out power to a max of 1
         double strafe = normalizeToPower * xFactor;                // Fill out power to a max of 1
         double turn = 0;
-        double startAngle = imu.getAngle();
 
 
-        while (getPosition() < Math.abs(yTicks) || getPosition() < Math.abs(xTicks)){
+        // Initialize power settings
+        double acceleration = 0.3;
+        double threshold = 0.1 / acceleration; // Threshold is the percentage of the distance we should be ramping power
+        double accelerateThreshold = threshold * distance;
+        double normFactor = 1 / Math.sqrt(acceleration * accelerateThreshold); // retrieve max value, normalize it to 1
+        double power = 0.05;
 
+
+        double position = getPosition();
+        while (position < distance){
+
+            System.out.println(position / distance);
+
+            // Modeling a piece wise of power as a function of distance
+            double p1 = normFactor * Math.sqrt(acceleration * position);
+            double p2 = 1;
+            double p3 = normFactor * Math.sqrt(acceleration * (distance - position));
+            power = Math.min(Math.min(p1, p2), p3);
+
+
+            // PID Controller
             double error = startAngle - imu.getAngle();
             turn += error * learning_rate;
-            setDrivePower(drive, strafe, turn);
+            setDrivePower(drive * power, strafe * power, turn);
+
+
+            position = getPosition() + 0.01;
 
             telemetry.addData("Drive", drive);
             telemetry.addData("Strafe", strafe);
+            telemetry.addData("Power", power);
             telemetry.addData("Position", getPosition());
             telemetry.update();
         }
@@ -149,8 +176,13 @@ public class MecanumAutoEncoder extends LinearOpMode {
         double currentAngle         = imu.getAngle();
         double deltaAngle           = Math.abs(targetAngle - currentAngle);
         double power                = (targetAngle > currentAngle) ? 1 : -1;
-        double minPower             = 0.1 * power;
-        double maxPower             = 0.6 * power;
+
+        // Initialize power settings
+        double acceleration = 0.3;
+        double threshold = 0.1 / acceleration; // Threshold is the percentage of the distance we should be ramping power
+        double accelerateThreshold = threshold * deltaAngle;
+        double normFactor = 1 / Math.sqrt(acceleration * accelerateThreshold); // retrieve max value, normalize it to 1
+
 
         // Retrieve angle and MOE
         double upperBound = targetAngle + MOE;
@@ -159,9 +191,15 @@ public class MecanumAutoEncoder extends LinearOpMode {
 
             // Power Ramping based off a sin method
             double currentDeltaAngle = targetAngle - currentAngle;
-            double rampedPower = maxPower * Math.sin(Math.PI * Math.abs(currentDeltaAngle / deltaAngle));
-            power = rampedPower + minPower;
 
+
+            // Modeling a piece wise of power as a function of distance
+            double p1 = normFactor * Math.sqrt(acceleration * currentDeltaAngle);
+            double p2 = 1;
+            double p3 = normFactor * Math.sqrt(acceleration * (deltaAngle - currentDeltaAngle));
+            power = Math.min(Math.min(p1, p2), p3);
+            telemetry.addData("Power", power);
+            telemetry.update();
 
             // Handle clockwise (+) and counterclockwise (-) motion
             fl.setPower(-power);
@@ -201,7 +239,6 @@ public class MecanumAutoEncoder extends LinearOpMode {
          */
         double threshold = 0.1 / acceleration; // Threshold is the percentage of the distance we should be ramping power
         double accelerateThreshold = threshold * ticks;
-        double decelerateThreshold = (1 - threshold) * ticks;
         double normFactor = 1 / Math.sqrt(acceleration * accelerateThreshold); // retrieve max value, normalize it to 1
         double maxPower = 1;
 
@@ -218,7 +255,7 @@ public class MecanumAutoEncoder extends LinearOpMode {
             // Modeling a piece wise of power as a function of distance
             double p1 = normFactor * Math.sqrt(acceleration * position);
             double p2 = maxPower;
-            double p3 = power = normFactor * Math.sqrt(acceleration * (ticks - position));
+            double p3 = normFactor * Math.sqrt(acceleration * (ticks - position));
             power = Math.min(Math.min(p1, p2), p3);
 
 
