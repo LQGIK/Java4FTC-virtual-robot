@@ -18,6 +18,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="org.reflections:reflections:0.9.11" level="project" />
-    <orderEntry type="library" name="JavaFX" level="project" />
+    <orderEntry type="library" name="javafx-sdk-11.0.2/lib" level="project" />
   </component>
 </module>
