@@ -34,9 +34,10 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import net.waring.java4ftc.ops.Claw;
-import net.waring.java4ftc.ops.IMU;
+import org.firstinspires.ftc.teamcode.Utilities.IMU;
 import net.waring.java4ftc.utilities.Utils;
 import net.waring.java4ftc.ops.SyncTask;
+import org.firstinspires.ftc.teamcode.Utilities.IMU;
 
 
 @Autonomous(name="Arm-Mecanum Encoder", group="Autonomous Linear Opmode")

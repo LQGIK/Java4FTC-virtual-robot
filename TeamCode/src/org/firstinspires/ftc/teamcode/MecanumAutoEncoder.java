@@ -31,12 +31,13 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
-import net.waring.java4ftc.ops.IMU;
 import net.waring.java4ftc.ops.SyncTask;
 import net.waring.java4ftc.utilities.Utils;
+import org.firstinspires.ftc.teamcode.Utilities.IMU;
 
 
 @Autonomous(name="Mecanum Encoder", group="Autonomous Linear Opmode")
@@ -45,9 +46,10 @@ public class MecanumAutoEncoder extends LinearOpMode {
 
     private DcMotor fl, fr, bl, br;
     private IMU imu;
-    private Servo servo;
+    private ColorSensor colorSensor;
 
-    public void initialize(){
+
+    public void initialize() {
         // Motors
         fl = hardwareMap.get(DcMotor.class, "front_left_motor");
         fr = hardwareMap.get(DcMotor.class, "front_right_motor");
@@ -64,27 +66,32 @@ public class MecanumAutoEncoder extends LinearOpMode {
         bl.setDirection(DcMotorSimple.Direction.REVERSE);
         br.setDirection(DcMotorSimple.Direction.FORWARD);
 
-        servo = hardwareMap.get(Servo.class, "back_servo");
 
         // IMU (Inertial Measurement Unit)
         Utils.setHardwareMap(hardwareMap);
         imu = new IMU("imu");
+
+        // Color Sensor
+        colorSensor = hardwareMap.get(ColorSensor.class, "color_sensor");
     }
 
 
     @Override
-    public void runOpMode(){
+    public void runOpMode() {
 
         initialize();
         waitForStart();
+        for (int i = 1; i < 2 + 1; i++) {
+            if (opModeIsActive()) {
+                turn(i * 180, 0.5);
+            }
+        }
 
-        //drive(1000, 0.0, null);
-        //drive(2000, 0.0, null);
-
-
-        for (int i=0; i < 8; i++){
-            strafe(i * 45, 5000, 0.0);
-            strafe (i * 45 + 180, 5000, 0.0);
+        for (int i = 0; i < 8; i++) {
+            if (opModeIsActive()) {
+                strafe(i * 45, 5000, 0.0, null);
+                strafe(i * 45 + 180, 5000, 0.0, null);
+            }
         }
     }
 
@@ -92,7 +99,7 @@ public class MecanumAutoEncoder extends LinearOpMode {
      * @param angle
      * @param ticks
      */
-    public void strafe(double angle, int ticks, double startAngle){
+    public void strafe(double angle, int ticks, double startAngle, SyncTask task) {
 
         System.out.println(angle + " " + ticks);
 
@@ -109,7 +116,6 @@ public class MecanumAutoEncoder extends LinearOpMode {
         double distance = Math.max(yTicks, xTicks);
 
 
-
         // Take whichever is the highest number and find what you need to multiply it by to get 1 (which is the max power)
         double normalizeToPower = 1 / Math.max(Math.abs(xFactor), Math.abs(yFactor));
         double drive = normalizeToPower * yFactor;                 // Fill out power to a max of 1
@@ -117,48 +123,55 @@ public class MecanumAutoEncoder extends LinearOpMode {
         double turn = 0;
 
 
-        // Initialize power settings
-        double acceleration = 0.3;
-        double threshold = 0.1 / acceleration; // Threshold is the percentage of the distance we should be ramping power
-        double accelerateThreshold = threshold * distance;
-        double normFactor = 1 / Math.sqrt(acceleration * accelerateThreshold); // retrieve max value, normalize it to 1
-        double power = 0.05;
-
-
         double position = getPosition();
-        while (position < distance){
+        while (position < distance && opModeIsActive()) {
 
-            System.out.println(position / distance);
+            // Execute task synchronously
+            if (task != null) task.execute();
 
-            // Modeling a piece wise of power as a function of distance
-            double p1 = normFactor * Math.sqrt(acceleration * position);
-            double p2 = 1;
-            double p3 = normFactor * Math.sqrt(acceleration * (distance - position));
-            power = Math.min(Math.min(p1, p2), p3);
+            // Power ramping
+            double power = powerRamp(position, distance, 0.3);
 
 
             // PID Controller
             double error = startAngle - imu.getAngle();
             turn += error * learning_rate;
-            setDrivePower(drive * power, strafe * power, turn);
+            setDrivePower(drive * power, strafe * power, 0.0);
 
 
-            position = getPosition() + 0.01;
+            // Retrieve new position
+            position = getPosition();
 
+
+            // Telemetry
+            telemetry.addData("IMU", imu.getAngle());
             telemetry.addData("Drive", drive);
             telemetry.addData("Strafe", strafe);
             telemetry.addData("Power", power);
-            telemetry.addData("Position", getPosition());
+            telemetry.addData("Position", position);
+            telemetry.addData("Distance", distance);
             telemetry.update();
         }
         setDrivePower(0, 0, 0);
     }
 
-    public void setDrivePower(double drive, double strafe, double turn){
-        fr.setPower(drive - strafe - turn);
-        fl.setPower(drive + strafe + turn);
-        br.setPower(drive + strafe - turn);
-        bl.setPower(drive - strafe + turn);
+    /**
+     * @param position
+     * @param distance
+     * @param acceleration
+     * @return
+     */
+    public double powerRamp(double position, double distance, double acceleration) {
+
+        position += 0.01;           // Necessary otherwise we're stuck at position 0 (sqrt(0) = 0)
+        double normFactor = 1 / Math.sqrt(0.1 * distance);
+
+        // Modeling a piece wise of power as a function of distance
+        double p1 = normFactor * Math.sqrt(acceleration * position);
+        double p2 = 1;
+        double p3 = normFactor * Math.sqrt(acceleration * (distance - position));
+
+        return Math.min(Math.min(p1, p2), p3);
     }
 
 
@@ -167,37 +180,25 @@ public class MecanumAutoEncoder extends LinearOpMode {
      * @param MOE
      */
     public void turn(double targetAngle, double MOE) {
-
         System.out.println("Turning to " + targetAngle + " degrees");
 
-        telemetry.addData("Target Angle", targetAngle);
-        telemetry.update();
-
-        double currentAngle         = imu.getAngle();
-        double deltaAngle           = Math.abs(targetAngle - currentAngle);
-        double power                = (targetAngle > currentAngle) ? 1 : -1;
-
-        // Initialize power settings
-        double acceleration = 0.3;
-        double threshold = 0.1 / acceleration; // Threshold is the percentage of the distance we should be ramping power
-        double accelerateThreshold = threshold * deltaAngle;
-        double normFactor = 1 / Math.sqrt(acceleration * accelerateThreshold); // retrieve max value, normalize it to 1
+        double currentAngle = imu.getAngle();
+        double deltaAngle = Math.abs(targetAngle - currentAngle);
+        double power = (targetAngle > currentAngle) ? 1 : -1;
 
 
         // Retrieve angle and MOE
         double upperBound = targetAngle + MOE;
         double lowerBound = targetAngle - MOE;
-        while (lowerBound >= currentAngle || currentAngle >= upperBound){
+        while ((lowerBound >= currentAngle || currentAngle >= upperBound) && opModeIsActive()) {
 
-            // Power Ramping based off a sin method
+            // Power Ramping based off a logistic piecewise
             double currentDeltaAngle = targetAngle - currentAngle;
+            double anglePosition = deltaAngle - currentDeltaAngle + 0.01; // Added the 0.01 so that it doesn't get stuck at 0
 
 
             // Modeling a piece wise of power as a function of distance
-            double p1 = normFactor * Math.sqrt(acceleration * currentDeltaAngle);
-            double p2 = 1;
-            double p3 = normFactor * Math.sqrt(acceleration * (deltaAngle - currentDeltaAngle));
-            power = Math.min(Math.min(p1, p2), p3);
+            power = powerRamp(anglePosition, deltaAngle, 0.3);
             telemetry.addData("Power", power);
             telemetry.update();
 
@@ -209,112 +210,27 @@ public class MecanumAutoEncoder extends LinearOpMode {
             //System.out.println("Power: " + power);
 
             currentAngle = imu.getAngle();
+
+
+            telemetry.addData("IMU", imu.getAngle());
         }
+
         // Stop power
         setAllPower(0);
     }
 
     /**
-     * Drive straight with Proportional PID Controller
-     * @param ticks
+     * @return average encoder position
      */
-    public void drive(int ticks, Double targetAngle, SyncTask task) {
-
-        System.out.println("Driving " + ticks + " ticks");
-
-        // Initialize power settings
-        double leftPower        = 0;
-        double rightPower       = 0;
-        double learning_rate    = 0.000001;
-
-        // thresholds are dependent on acceleration
-        double acceleration = 0.3;
-        double power = 0.05;
-
-        /*
-        Smaller distances should be slower and have more transition. Therefore ticks is inversely proportional to threshold value.
-        Since the ramping takes at most 2000 ticks, we specify that if we have 2000 ticks, we should be ramping up half the distance,
-        and ramping down the other half.
-        Or if we specify 10000 ticks, then we should ramp up for 10% of the distance, and ramp down for 10% of the distance, leaving 80% for full power
-         */
-        double threshold = 0.1 / acceleration; // Threshold is the percentage of the distance we should be ramping power
-        double accelerateThreshold = threshold * ticks;
-        double normFactor = 1 / Math.sqrt(acceleration * accelerateThreshold); // retrieve max value, normalize it to 1
-        double maxPower = 1;
-
-        resetMotors();
-        setAllPower(power);
-
-        if (targetAngle == null) targetAngle = imu.getAngle();
-        double position = getPosition();
-        while(position < ticks){
-
-            if (task != null) task.execute();
-
-
-            // Modeling a piece wise of power as a function of distance
-            double p1 = normFactor * Math.sqrt(acceleration * position);
-            double p2 = maxPower;
-            double p3 = normFactor * Math.sqrt(acceleration * (ticks - position));
-            power = Math.min(Math.min(p1, p2), p3);
-
-
-            if (power > 1) throw new Error("Power is over 1");
-
-            setAllPower(power);
-            position =  getPosition() + 0.0001;
-
-
-
-            // Logging
-            telemetry.addData("Position", position);
-            telemetry.addData("Power", power);
-            telemetry.addData("P1", p1);
-            telemetry.addData("P2", p2);
-            telemetry.addData("P3", p3);
-            telemetry.addData("Traveled", position / ticks * 100);
-            telemetry.update();
-
-
-
-
-
-
-            // Direction Tuning [ PID Controller ]
-/*            double currentHeading = imu.getHeading();
-            double error = targetAngle - currentHeading;
-            double correction = error * learning_rate;
-            leftPower -= correction;
-            rightPower += correction;
-
-            fl.setPower(leftPower);
-            bl.setPower(leftPower);
-            fr.setPower(rightPower);
-            br.setPower(rightPower);*/
-        }
-        setAllPower(0);
-    }
-
-
-
-    double getThreshold(double ticks){
-        //return (0.05 * ticks + 500) / ticks;
-        return 0.0001 * (-Math.sqrt(10 * ticks) + 500);
-    }
-
-    double getPosition(){
+    double getPosition() {
         return (Math.abs(fl.getCurrentPosition()) + Math.abs(fr.getCurrentPosition()) + Math.abs(bl.getCurrentPosition()) + Math.abs(br.getCurrentPosition())) / 4.0;
-    }
-
-    public double powerFromTicks(double x, double accelerationFactor){
-        return Math.sqrt(x * accelerationFactor);
     }
 
 
     /**
      * @param power
      */
-    private void setAllPower(double power){
+    private void setAllPower(double power) {
         fl.setPower(power);
         fr.setPower(power);
         bl.setPower(power);
@@ -322,9 +238,21 @@ public class MecanumAutoEncoder extends LinearOpMode {
     }
 
     /**
+     * @param drive
+     * @param strafe
+     * @param turn
+     */
+    public void setDrivePower(double drive, double strafe, double turn) {
+        fr.setPower(drive - strafe - turn);
+        fl.setPower(drive + strafe + turn);
+        br.setPower(drive + strafe - turn);
+        bl.setPower(drive - strafe + turn);
+    }
+
+    /**
      * Resets Motors
      */
-    private void resetMotors(){
+    private void resetMotors() {
         fl.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         fr.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         bl.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -333,19 +261,6 @@ public class MecanumAutoEncoder extends LinearOpMode {
         fr.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         bl.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         br.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
     }
-
-
-    /**
-     * Maps value to a given range
-     * @param value
-     * @param min
-     * @param max
-     * @return
-     */
-    private double map(double value, double min, double max){
-        return (value - min) / (max - min);
-    }
-
-
 }

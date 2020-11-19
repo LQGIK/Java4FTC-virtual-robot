@@ -2,10 +2,12 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import net.waring.java4ftc.ops.IMU;
+
 import net.waring.java4ftc.utilities.Utils;
+import org.firstinspires.ftc.teamcode.Utilities.IMU;
 
 
 @TeleOp(name = "Mecanum Drive", group="TeleOp")
@@ -15,6 +17,7 @@ public class MecanumTeleOp extends OpMode {
 
     private DcMotor fr, fl, br, bl;
     private IMU imu;
+    private ColorSensor colorSensor;
 
     private double startHeading;
     private boolean DPAD_Toggle;
@@ -30,6 +33,7 @@ public class MecanumTeleOp extends OpMode {
         fl = hardwareMap.get(DcMotor.class, "front_left_motor");
         br = hardwareMap.get(DcMotor.class, "back_right_motor");
         bl = hardwareMap.get(DcMotor.class, "back_left_motor");
+        colorSensor = hardwareMap.get(ColorSensor.class, "color_sensor");
 
         fr.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         fl.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -99,6 +103,7 @@ public class MecanumTeleOp extends OpMode {
         else if (gamepad1.dpad_down) turn = turn2(180, 0.5);
 
 
+
         // Setting driver power
         fr.setPower((drive - strafe - turn) * velocity);
         fl.setPower((drive + strafe + turn) * velocity);
@@ -107,15 +112,28 @@ public class MecanumTeleOp extends OpMode {
 
 
 
-
         // Telemetry
+        telemetry.addData("IR", colorSensor.);
         telemetry.addData("Velocity Toggle", velocityToggle);
         telemetry.addData("Strafe", strafe);
         telemetry.addData("Drive", drive);
         telemetry.addData("Turn", turn);
         telemetry.addData("IMU", imu.getAngle());
         telemetry.addData("Error", startHeading - imu.getAngle());
+        /*
+        telemetry.addData("Fl", fl.getCurrentPosition());
+        telemetry.addData("FR", fr.getCurrentPosition());
+        telemetry.addData("BL", bl.getCurrentPosition());
+        telemetry.addData("BR", br.getCurrentPosition());
         telemetry.addData("Position", (fl.getCurrentPosition() + fr.getCurrentPosition() + bl.getCurrentPosition() + br.getCurrentPosition()) / 4.0);
+        */
+        telemetry.addData("red", colorSensor.red());
+        telemetry.addData("green", colorSensor.green());
+        telemetry.addData("blue", colorSensor.blue());
+        telemetry.addData("led", gamepad1.b);
+        telemetry.addData("colorType", colorSensor.getClass().getName());
+
+
 
     }
 
@@ -133,21 +151,18 @@ public class MecanumTeleOp extends OpMode {
         double lowerBound = targetAngle - MOE;
         if (lowerBound >= currentAngle || currentAngle >= upperBound){
             double coTermAngle = coTerminal(targetAngle - currentAngle);
-            return (coTermAngle <= 0) ? 0.6 : -0.6;
+            return (coTermAngle <= 0) ? 0.3 : -0.3;
         }
         else return 0;
     }
-
     /**
      * @param angle
      * @return coTermAngle
      */
-   public double coTerminal(double angle){
+    public double coTerminal(double angle){
 
         double coTermAngle = (angle + 180) % 360;
         coTermAngle -= 180;
         return coTermAngle;
-   }
+    }
 }
-
-
