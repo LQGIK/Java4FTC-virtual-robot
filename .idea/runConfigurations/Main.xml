@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Main" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="virtual_robot.controller.VirtualRobotApplication" />
     <module name="Controller" />
-    <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/lib/javafx-sdk-11.0.2-active/lib --add-modules javafx.controls,javafx.fxml" />
+    <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\xlqgi\DEV\FTC\Java4FTC-virtual-robot\lib\javafx-sdk-11.0.2-active\lib&quot; --add-modules javafx.base,javafx.controls,javafx.fxml" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="com.qualcomm.robotcore.eventloop.opmode.*" />
@@ -17,4 +16,3 @@
     </method>
   </configuration>
 </component>
-
