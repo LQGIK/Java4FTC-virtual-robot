@@ -1,0 +1,11 @@
+MAC
+--module-path
+"/Users/GGabbay/DEV/FTC/Java4FTC-virtual-robot/lib/javafx-sdk-11.0.2-active/lib"
+--add-modules
+javafx.base,javafx.controls,javafx.fxml
+
+WINDOWS
+--module-path
+"C:\Users\xlqgi\DEV\FTC\Java4FTC-virtual-robot\lib\javafx-sdk-11.0.2-active\lib"
+--add-modules
+javafx.base,javafx.controls,javafx.fxml

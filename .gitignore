@@ -2,4 +2,4 @@ out/
 *.class
 .idea/vcs.xml
 .idea/workspace.xml
-lib/javafx-sdk-11.0.2-active/
+lib/javafx-sdk-11.0.2-window/

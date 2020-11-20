@@ -44,8 +44,6 @@ public class MecanumTeleOp extends OpMode {
     @Override
     public void loop() {
 
-        gamepad1.right_stick_y;
-
         // Get Thumbsticks
         Controller.Thumbstick rightThumbstick = controller.getRightThumbstick();
         Controller.Thumbstick leftThumbstick = controller.getLeftThumbstick();
