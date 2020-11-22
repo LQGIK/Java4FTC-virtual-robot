@@ -2,17 +2,22 @@ package org.firstinspires.ftc.teamcode.Hardware;
 
 import com.qualcomm.robotcore.hardware.GamePad;
 
-public class Controller extends GamePad{
+public class Controller {
+
+    public GamePad src;
+    public Controller(GamePad src){
+        this.src = src;
+    }
 
     public Thumbstick getRightThumbstick() {
-        return new Controller.Thumbstick(this.right_stick_x, this.right_stick_y);
+        return new Thumbstick(src.right_stick_x, src.right_stick_y);
     }
 
     public Thumbstick getLeftThumbstick() {
-        return new Controller.Thumbstick(this.left_stick_x, this.left_stick_y);
+        return new Thumbstick(src.left_stick_x, src.left_stick_y);
     }
 
-   public class Thumbstick {
+    public class Thumbstick {
 
         private double rawX;
         private double rawY;
@@ -59,30 +64,30 @@ public class Controller extends GamePad{
         }
 
         public double getInvertedX() {
-            return -rawX;
+            return rawX * -1;
         }
 
         public double getInvertedY() {
-            return -rawY;
+            return rawY * -1;
         }
 
         public double getInvertedShiftedX() {
-            return -shiftedX;
+            return shiftedX * -1;
         }
 
         public double getInvertedShiftedY() {
-            return -shiftedY;
+            return shiftedY * -1;
         }
 
         public double getInvertedShiftedX(Double shiftAngle) {
-            return -this.getShiftedY();
+            return (this.rawX * Math.sin(Math.toRadians(shiftAngle))) + (this.rawY * Math.cos(Math.toRadians(shiftAngle))) * -1;
         }
 
         public double getInvertedShiftedY(Double shiftAngle) {
-            return -this.getShiftedX();
+            return (this.rawX * Math.sin(Math.toRadians(shiftAngle))) + (this.rawY * Math.cos(Math.toRadians(shiftAngle))) * -1;
         }
     }
 
-   public boolean DPADPress() {return dpad_down || dpad_left || dpad_right || dpad_up;}
+   public boolean DPADPress() {return src.dpad_down || src.dpad_left || src.dpad_right || src.dpad_up;}
 
 }

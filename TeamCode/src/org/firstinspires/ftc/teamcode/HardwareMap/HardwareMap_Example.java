@@ -56,8 +56,8 @@ public class HardwareMap_Example
     // CHAWKS: The Robot Parts need to be established here
    // public DcMotor  leftFront   = null;
    // public DcMotor  rightFront  = null;
-    public DcMotor leftBack   = null;
-    public DcMotor rightBack  = null;
+    public DcMotor  leftBack   = null;
+    public DcMotor  rightBack  = null;
     /////////////////////////////////////
 
     /* local OpMode members. */

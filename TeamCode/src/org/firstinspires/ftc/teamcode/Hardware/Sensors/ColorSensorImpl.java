@@ -9,9 +9,9 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
  */
 public class ColorSensorImpl {
 
-    ColorSensor sensor;
-    public ColorSensorImpl(ColorSensor sensor){
-       this.sensor = sensor;
+    ColorSensor src;
+    public ColorSensorImpl(ColorSensor src) {
+       this.src = src;
     }
 
     public double[] getRGB(){
@@ -20,19 +20,14 @@ public class ColorSensorImpl {
 
     public int red()
     {
-        return sensor.red() * 256/8192;
+        return src.red() * 256/8192;
     }
     public int green()
     {
-        return sensor.green() * 256/8192;
+        return src.green() * 256/8192;
     }
     public int blue()
     {
-        return sensor.blue() * 256/8192;
+        return src.blue() * 256/8192;
     }
-
-    public int alpha(){
-        return sensor.alpha();
-    }
-
 }

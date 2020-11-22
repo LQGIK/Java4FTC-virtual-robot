@@ -31,7 +31,6 @@ package org.firstinspires.ftc.teamcode.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-
 import org.firstinspires.ftc.teamcode.Hardware.Controller;
 import org.firstinspires.ftc.teamcode.Hardware.MecanumRobot;
 import org.firstinspires.ftc.teamcode.Utilities.SyncTask;
@@ -128,7 +127,7 @@ public class MecanumAutoEncoder extends LinearOpMode {
      */
     public void log(){
         telemetry.addData("IMU", mecanumRobot.imu.getAngle());
-        telemetry.addData("RGB", "(${mecanumRobot.colorSensor.red()}, ${mecanumRobot.colorSensor.green()}, ${mecanumRobot.colorSensor.blue()}");
+        telemetry.addData("RGB", String.format("(%d, %d, %d)", mecanumRobot.colorSensor.red(), mecanumRobot.colorSensor.green(), mecanumRobot.colorSensor.blue()));
         telemetry.addData("Error", mecanumRobot.imu.getStartAngle() - mecanumRobot.imu.getAngle());
     }
 }

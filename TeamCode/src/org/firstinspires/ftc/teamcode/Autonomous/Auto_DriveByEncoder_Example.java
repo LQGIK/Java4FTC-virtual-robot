@@ -34,11 +34,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
 import org.firstinspires.ftc.teamcode.HardwareMap.HardwareMap_Example;
-
-//import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
-// List where other files are located that are used in this OpMode
 
 /**
  * In this example:
@@ -53,7 +49,7 @@ public class Auto_DriveByEncoder_Example extends LinearOpMode {
 
     /* CHAWKS: Call and declare the robot here */
     HardwareMap_Example     robot   = new HardwareMap_Example();   // Use a Pushbot's hardware
-    private ElapsedTime runtime = new ElapsedTime();
+    private ElapsedTime     runtime = new ElapsedTime();
 
 
     /*
