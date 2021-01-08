@@ -90,6 +90,10 @@ public class Utils {
         return Math.sqrt(Math.pow(baseRGB[0] - currentRGB[0], 2) + Math.pow(baseRGB[1] - currentRGB[1], 2) + Math.pow(baseRGB[2] - currentRGB[2], 2));
     }
 
+    public static double map(double x, double a_min, double a_max, double b_min, double b_max){
+        return (x - a_min) / (a_max - a_min) * (b_max - b_min) + b_min;
+    }
+
     /**
      * @param angle
      * @return coTermAngle
