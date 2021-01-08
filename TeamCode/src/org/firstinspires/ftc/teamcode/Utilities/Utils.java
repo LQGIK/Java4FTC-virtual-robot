@@ -1,15 +1,40 @@
 package org.firstinspires.ftc.teamcode.Utilities;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class Utils {
 
     public static HardwareMap hardwareMap;
+    public static OpMode opMode;
     public static Telemetry telemetry;
+    private static boolean isLinearOpMode;
 
-    public static void setHardwareMap(HardwareMap hardwareMap){ Utils.hardwareMap = hardwareMap; }
-    public static void setTelemetry(Telemetry telemetry) { Utils.telemetry = telemetry; }
+    // Only use if it is in fact a LinearOpMode
+    public static LinearOpMode linearOpMode = null;
+
+    /**
+     * Sets the OpMode
+     * @param opMode
+     */
+    public static void setOpMode(OpMode opMode) {
+        Utils.opMode = opMode;
+        hardwareMap = opMode.hardwareMap;
+        telemetry = opMode.telemetry;
+
+        isLinearOpMode = (opMode instanceof LinearOpMode);
+        if (isLinearOpMode) {
+            linearOpMode = (LinearOpMode) opMode;
+        }
+    }
+
+
+    public static boolean isActive(){
+        if (isLinearOpMode) return linearOpMode.opModeIsActive();
+        return true;
+    }
 
     /**
      * I'm lazy

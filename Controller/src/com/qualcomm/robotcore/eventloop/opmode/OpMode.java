@@ -36,6 +36,10 @@ Modified by contributors to Virtual_Robot project.
 
 package com.qualcomm.robotcore.eventloop.opmode;
 
+import com.qualcomm.robotcore.hardware.HardwareMap;
+
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+
 import virtual_robot.controller.VirtualRobotController;
 
 import java.util.concurrent.TimeUnit;
@@ -52,6 +56,8 @@ public abstract class OpMode extends VirtualRobotController.OpModeBase {
      * updated before every call to loop.
      */
     public double time = 0.0;
+    public HardwareMap hardwareMap;
+    public Telemetry telemetry;
 
     // internal time tracking
     private long startTime; // in nanoseconds

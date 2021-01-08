@@ -1,5 +1,8 @@
 package org.firstinspires.ftc.teamcode.Hardware;
 
+import com.qualcomm.robotcore.hardware.HardwareMap;
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+
 public interface Robot {
 
     /**
@@ -10,7 +13,7 @@ public interface Robot {
     /**
      * Initialize all motors
      */
-    public void initMotors();
+    public void resetMotors();
 
     /**
      * @return {double} Robot's current position
